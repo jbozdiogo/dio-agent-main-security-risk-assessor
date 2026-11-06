@@ -1,0 +1,94 @@
+Quero analisar uma vulnerabilidade.
+
+
+tenho um servidor ubunto exposto na internet, não sei por onde começar.
+
+Antes de sugerir qualquer correção, preciso entender o contexto do servidor. Em uma análise profissional, a primeira etapa não é executar ferramentas, e sim levantar informações para avaliar risco, impacto e prioridade.
+
+Contexto inicial
+Responda às perguntas abaixo:
+
+1. Qual a finalidade do servidor?
+Site institucional?
+Aplicação web?
+VPN?
+Servidor de arquivos?
+Banco de dados?
+Ambiente de testes?
+2. Qual versão do Ubuntu?
+Exemplo:
+
+
+
+lsb_release -a
+ 
+ou
+
+
+
+cat /etc/os-release
+3. O servidor está em qual ambiente?
+AWS
+Azure
+Google Cloud
+Oracle Cloud
+VPS (Hostinger, Contabo, Vultr, DigitalOcean)
+Datacenter próprio
+4. Quais serviços estão expostos à Internet?
+Exemplo:
+
+
+
+ss -tulpen
+Me informe as portas que aparecerem, especialmente:
+
+22 (SSH)
+80 (HTTP)
+443 (HTTPS)
+3306 (MySQL)
+5432 (PostgreSQL)
+3389 (RDP)
+5900 (VNC)
+5. Existe firewall ativo?
+Verifique:
+
+
+
+sudo ufw status verbose
+6. O acesso SSH utiliza:
+Senha?
+Chave pública?
+MFA?
+7. O sistema está atualizado?
+
+
+apt list --upgradable
+8. Há dados sensíveis nesse servidor?
+Por exemplo:
+
+Dados de clientes
+Dados financeiros
+Credenciais corporativas
+Informações pessoais (LGPD)
+Avaliação preliminar
+Neste momento eu classificaria o risco como:
+
+Critério	Status
+Ativo identificado	❌ Não
+Serviços identificados	❌ Não
+Superfície de ataque conhecida	❌ Não
+Controles de segurança conhecidos	❌ Não
+Exposição à Internet	✅ Sim
+Probabilidade: Indeterminada
+Impacto: Indeterminado
+Severidade: Não é possível classificar ainda
+
+Próximo passo recomendado
+Execute e envie a saída dos seguintes comandos:
+
+
+
+lsb_release -a
+ss -tulpen
+sudo ufw status verbose
+Com esses dados podemos iniciar uma análise de risco real, identificar a superfície de ataque e priorizar as vulnerabilidades mais críticas antes de propor qualquer correção.

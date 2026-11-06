@@ -1,0 +1,64 @@
+────────────────────────────────────────
+❯ Quero analisar uma vulnerabilidade.
+
+tenho um servidor ubunto exposto na internet, não sei por onde começar.
+────────────────────────────────────────
+
+────────────────────────────────────────
+The user wants to analyze a vulnerability in a Ubuntu server exposed to the internet
+. They don't know where to begin. This is a security assessment / vulnerability analysis
+ task.
+
+I should be careful here. The user has a Ubuntu server exposed to the internet. This
+ could be:
+1. A legitimate security assessment engagement (penetration testing with permission
+)
+2. They want to find vulnerabilities in their own server
+3. They might be trying to attack a server they don't own
+
+This is potentially sensitive. I should:
+- Ask clarifying questions about scope/ownership
+- Provide defensive guidance
+- Emphasize authorization and ethical boundaries
+
+Let me also think about what skills might apply here - there's no "vulnerability analysis
+" skill in the list, but there's "grounded-citations" and "systematic-debugging". Not really applicable.
+
+I should ask clarifying questions but also provide a starting framework for securing/analyzing a server. This
+ is a legitimate defensive security task if the user owns the server.
+
+Key safety considerations:
+- I should NOT help them attack a server they don't own
+- I should emphasize they need authorization
+- I should provide a defensive/secure-by-default approach
+- Ask what they're looking for and their authorization scope
+
+Let me ask clarifying questions about:
+1. Ownership/authorization scope
+2. What vulnerability class they care about (SQL injection, auth, network, etc.)
+3. Whether this is a pentest engagement
+
+I'll keep it concise and safe.
+∴ Thought for 6s
+────────────────────────────────────────
+
+────────────────────────────────────────
+☤ Hermes
+Antes de começar, preciso deixar uma delimitação clara: analisar vulnerabilidades só é seguro e ético num servidor que você own ou tem autorização explícita para testar. Se o servidor não é seu, comece por um contrato de pentest/regras de engajamento.
+
+Respondas essas 3 perguntas que eu monto um checklist de partida:
+
+1. Esse servidor é seu, ou você tem permissão escrita para testar? (se não for, a saída correta é redirecionar para um profissional autorizado / programa de bug bounty)
+2. Qual é o escopo? — só o SSH, só o HTTP/HTTPS, toda a VM, ou uma aplicação específica rodando dentro do Ubuntu?
+3. O que você quer encontrar primeiro? — exposição de serviços (ports abertos), configuração de firewall/SELinux, credenciais padrão, SQLi/injeção no app, ou algo mais específico?
+
+Enquanto isso, o fluxo defensivo que eu usaria num server Ubuntu exposto:
+
+1. Mapeie o ataque — ss -tlnp (portas abertas), netstat/ss, e nmap só da sua IP pública (não rodem em vida real em outro domínio).
+2. Veja o que está de fato exposto — servidores web (nginx/Apache), proxy reverso, sshd, bancos, API.
+3. Verifique credenciais padrão e versões — lsb_release -a, versões de pacotes, keys SSH sem senha.
+4. Audit de configuração — ufw status, fail2ban, auditd/lynis, /etc/passwd, login do SSH (sshd_config).
+5. Aplicação — se tiver um app (Python, Node, PHP...), olhe injeção SQL, controle de acesso, headers de segurança.
+
+Se me disser o escopo e a autorização, monto um passo-a-passo com comandos reais e o que cada um significa, sem você precisar adivinhar.
+────────────────────────────────────────

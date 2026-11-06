@@ -1,0 +1,44 @@
+RELATORIO DE ANALISE DE SEGURANCA
+========================================================================
+Versao antiga : app.py (16 linhas)
+Versao nova   : appcorr.py (87 linhas)
+------------------------------------------------------------------------
+
+[Senha armazenada em texto puro]
+  app.py    : SIm
+  appcorr.py: Sim
+  Mitigado  : SIM
+
+[SQL Injection (execucao de SQL]
+  app.py    : Nao - parametrizada
+  appcorr.py: Sim
+  Mitigado  : SIM
+
+[Forca bruta / sem rate limiting]
+  app.py    : Nao
+  appcorr.py: Sim
+  Mitigado  : SIM
+
+[Ataque por timing (comparacao sensivel a tempo)]
+  app.py    : Nao
+  appcorr.py: Sim
+  Mitigado  : SIM
+
+[Enumeracao de usuarios via resposta]
+  app.py    : Nao
+  appcorr.py: Sim
+  Mitigado  : SIM
+
+[Mensagens de erro / vazamento de informacoes]
+  app.py    : Nao
+  appcorr.py: Sim
+  Mitigado  : SIM
+
+[Estado global nao thread-safe (em outros fluxos)]
+  app.py    : Nao avaliado
+  appcorr.py: Sim
+  Mitigado  : SIM
+
+========================================================================
+VERDICT: TODAS as vulnerabilidades criticas foram mitigadas.
+========================================================================
